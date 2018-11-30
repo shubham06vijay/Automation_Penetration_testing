@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SHELL</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css"/>
+</head>
+<body>
+<div id="main_container">
+    <div id="header">
+        <div id="logo"><img src="../../static/images/Shell.png" alt="" border="0"/></a><h1><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspS.H.E.L.L
+        </h1></b></div>
+        <div id="menu_tab">
+            <ul class="menu" style="color:white">
+                <li><a href={% url 'enum_vul_services' %}><span style="color:#66a3ff"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEnum Vulnerable Services</b> </span></a>
+                </li><br>
+                <li><a href="{% url 'publicdata' %}"><span style="color:#66a3ff"><b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEnum Publically Available Data</b></span></a>
+                </li><br>
+                <li>
+                    <form method="post" action="{% url 'main' %}">
+                        {% csrf_token %}
+                        <input type="text" name="ip" placeholder="IP address to attack">
+                        <input type="submit" value="Check for weak authentication Pwd"><span style="color:#66a3ff"></input>
+                    </form>
+                </li><br>
+                <li><a href="{% url 'software_update' %}"> <span style="color:#66a3ff"><b>Software updates?</b></span> </a></li>
+                <li><a href=""> <span style="color:#66a3ff"><b>Metadata of docs and images</b></span></a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="main_content">
+
+        {% if not services %}
+
+            <div class="left_content">
+                <div class="main_title"><img src="../../static/images/welcome.gif" alt=""/></div>
+                <div class="left_box">
+                    <div class="left_icon"><img src="../../static/images/icon_world.gif" alt=""/></div>
+                    <div class="left_text_box">
+                        <h1>What to do?</h1>
+                        <p> Please Click any of the above buttons to perform the kind of testing you want! </p>
+                    </div>
+                </div>
+                <div class="left_box">
+                    <div class="left_icon"><img src="../../static/images/icon_team.gif" alt=""/></div>
+                    <div class="left_text_box">
+                        <h1>Our team</h1>
+                        <p> 1.Shubham Vijay<br>1.Abhishek Gautam<br>1.Saurabh Rathi<br></p>
+                    </div>
+                </div>
+                <div class="featured_project">
+                    <h1>Featured Project</h1>
+                    <img src="../../static/images/hacked.jpg" alt="" border="0" width="550" height="300"/>
+                </div>
+            </div>
+            <!-- end of left content-->
+            <div class="right_content">
+                <div class="blog_title">from the blog</div>
+                <div class="right_box">
+                    <div class="right_box_top"></div>
+                    <div class="right_box_center">
+                        <p class="Text_box"><span class="orange">Hi, You get your updates here!</span><br/>
+                            <i>(18.10.03)</i><br/>
+                            Your's is a perfect device- IMMUNE TO VULNERABILITIES! haha! xD </p>
+                        <p class="text_box"><span class="orange">Please look at the latest updates! </span><br/>
+                            <i>(17.09.09)</i><br/>
+                            YOU HAVE BEEN HACKED! xP</p>
+                        <a href="" class="read_more">all news</a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="right_box_bottom"></div>
+                </div>
+                <div class="testimonials_title">clients testimonials</div>
+                <div class="right_box">
+                    <div class="right_box_top"></div>
+                    <div class="right_box_center">
+                        <p class="text_box"><span class="orange">Carly Chaikin</span><br/>
+                            <i>SHELL</i><br/>
+                            SECURITY IS AN ILLUSION </p>
+                        <p class="text_box"><span class="orange">Rami Malek</span><br/>
+                            <i>SHELL</i><br/>
+                            SECURITY IS AN ILLUSION</p>
+                        <a href="" class="read_more">all news</a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="right_box_bottom"></div>
+                </div>
+            </div>
+            <!-- end of left content-->
+            <div class="clear"></div>
+
+        {% else %}
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>status</th>
+                </tr>
+
+                {% for s in services %}
+                    <tr>
+                        <td>{{ s.name }}</td>
+                        <td>{{ s.is_vulnerable }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% endif %}
+
+    </div>
+
+    <!-- main_content-->
+    <div id="footer"><img src="../../static/images/s.png" alt="" class="footer_logo" width="100" height="80"/>
+        <div class="left_footer"> SHELL &copy; 2009. All Rights Reserved.</div>
+        <div class="right_footer"><a href="http://all-free-download.com/free-website-templates/">Home</a>
+            <!-- | <a href="http://all-free-download.com/free-website-templates/">About Us</a> | <a href="http://all-free-download.com/free-website-templates/">Pivacy Policy</a> | <a href="http://all-free-download.com/free-website-templates/">Contact</a> | <a href="http://indeziner.com">INDEZINER</a> -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

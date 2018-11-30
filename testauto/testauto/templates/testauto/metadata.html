@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>publicData</title>
+</head>
+<body>
+ <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="file" name="pic" id="pic" accept="image/*"/>
+        <input type="submit" value="submit" />
+ </form>
+ {% if techs %}
+     <h4>metadata is</h4>
+     <ul>
+     {% for a, v in techs %}
+     <li>{{ a }} : {{ v }}</li>
+     {% endfor %}
+     </ul>
+ {% endif %}
+</body>
+</html>

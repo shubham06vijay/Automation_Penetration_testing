@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>publicData</title>
+</head>
+<body>
+ <form method="post">
+        {% csrf_token %}
+        <label for="website">Enter name of the website</label>
+        <input type="text" id="website" name="website" />
+        <input type="submit" value="submit" />
+ </form>
+ {% if techs %}
+{#     <h4>The ip of the server is:</h4>#}
+{#     {{ ip }} </br>#}
+     <h4>The technologies used by the website are:</h4>
+     <ul>
+     {% for a in techs %}
+     <li>{{ a }}</li>
+     {% endfor %}
+     </ul>
+
+ {% endif %}
+</body>
+</html>
